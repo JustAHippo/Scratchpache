@@ -15,27 +15,27 @@ app.get('/', (req, res) => {
                 // console.log(response.data)
                 let message = ""
 
-
                 for (let i = 0; i != response.data.length - 1; i++) {
                         message = message + response.data[i].value
                 }
+
                 console.log(message)
                 let split = message.match(/.{2}/g);
+                
                 let decodedMessage = ""
 
-                //for (let i = 0; i < message.length / 2; i += 2) {
-                //
-                //}
-        for (let i = 0; i < split.length; i++) {
-            let decodedBlock=numToChar(split[i])
-            if (split[i]==-1) {
+                for (let i = 0; i < split.length; i++) {
+                        let decodedBlock=numToChar(split[i])
+
+                        if (split[i]==-1) {
                                 console.log("Broken")
-                break;
+                                break;
                         }
-            decodedMessage = decodedMessage+decodedBlock
-        }
-        console.log(decodedMessage)
-                return res.send(decodedMessage.replaceAll("undefined",''));
+
+                        decodedMessage = decodedMessage+decodedBlock
+                }
+                console.log(decodedMessage)
+                        return res.send(decodedMessage.replaceAll("undefined",''));
         })
         .catch(error => {
                 console.log(error);
